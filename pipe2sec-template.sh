@@ -10,5 +10,5 @@
 
 
 while true; do
-        ssh someuser@central_host 'cat >> /someplace/some_central_log.log' < /someplace/local_log.log
+        ssh someuser@central_host 'tail -f >> /someplace/some_central_log.log' < /someplace/local_log.log
 done
