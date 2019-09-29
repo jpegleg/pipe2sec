@@ -13,6 +13,8 @@ while true; do
         ssh someuser@central_host 'cat >> /someplace/some_central_log.log' < /someplace/local_log.log
         cp /someplace/local_log.log /someplace/local_log.log.segment.$(date +%Y%m%d%H%M%S)
         cp /dev/null  /someplace/local_log.log
+        # clean up logs older than 20 days, adjust the 20 to length of time you want to keep the segments locally
+        find /someplace -name "local_log.log.segment*" -mtime +20 -exec rm -f {} \;
         # set the sleep based on the situation, default here at 5 minutes
         sleep 300
 done
