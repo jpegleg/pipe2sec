@@ -13,5 +13,6 @@ while true; do
         ssh someuser@central_host 'cat >> /someplace/some_central_log.log' < /someplace/local_log.log
         cp /someplace/local_log.log /someplace/local_log.log.segment.$(date +%Y%m%d%H%M%S)
         cp /dev/null  /someplace/local_log.log
-        sleep 5
+        # set the sleep based on the situation, default here at 5 minutes
+        sleep 300
 done
