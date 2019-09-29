@@ -10,5 +10,8 @@
 
 
 while true; do
-        ssh someuser@central_host 'tail -f >> /someplace/some_central_log.log' < /someplace/local_log.log
+        ssh someuser@central_host 'cat >> /someplace/some_central_log.log' < /someplace/local_log.log
+        cp /someplace/local_log.log /someplace/local_log.log.segment.$(date +%Y%m%d%H%M%S)
+        cp /dev/null  /someplace/local_log.log
+        sleep 5
 done
